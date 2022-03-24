@@ -1,13 +1,65 @@
-import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-function App() {
+import AppBar from "./components/AppBar";
+import { DEFAULT_ROUTE, ROUTES } from "./router.model";
+
+import "./App.scss";
+
+const Feed = () => {
+  return <div>Feed</div>;
+};
+
+const ImageDetails = () => {
+  return <div>ImageDetails</div>;
+};
+
+const Favorites = () => {
+  return <div>Favorites</div>;
+};
+
+const App = () => {
   return (
     <div className="app">
-      <header className="app-header"></header>
-      <main className="app-main"></main>
-      <footer className="app-footer"></footer>
+      <Router>
+        <AppBar />
+        <Routes>
+          <Route
+            path={ROUTES.HOME}
+            element={<Navigate replace to={DEFAULT_ROUTE} />}
+          />
+
+          <Route path={ROUTES.FEED} element={<Feed />} />
+
+          <Route
+            path={ROUTES.FEED_IMAGE}
+            element={
+              <>
+                <Feed />
+                <ImageDetails />
+              </>
+            }
+          />
+
+          <Route path={ROUTES.FAVORITES} element={<Favorites />} />
+
+          <Route
+            path={ROUTES.FAVORITES_IMAGE}
+            element={
+              <>
+                <Favorites />
+                <ImageDetails />
+              </>
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,55 @@
+@import "../../theme.scss";
+
+.app-bar {
+  background-color: $background-color-secondary;
+
+  position: absolute;
+  left: 0;
+  width: $app-bar-size;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__logo {
+    fill: white;
+    position: absolute;
+    top: 50px;
+  }
+
+  &__navigation-icon {
+    fill: $background-color-secondary;
+
+    padding: 24px;
+    border-radius: 10px;
+    width: 22px;
+    height: 22px;
+
+    &--active {
+      fill: $background-color-active;
+      background-color: $background-color-active;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .app-bar {
+    bottom: 0;
+    flex-direction: row;
+    height: $app-bar-size;
+    width: 100%;
+
+    &__logo {
+      top: unset;
+      left: 24px;
+    }
+
+    &__navigation-icon {
+      width: 16px;
+      height: 16px;
+      padding: 16px;
+    }
+  }
+}

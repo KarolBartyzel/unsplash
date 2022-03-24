@@ -1,0 +1,15 @@
+@import "./theme.scss";
+
+.app {
+  background-color: $background-color-primary;
+  height: 100vh;
+  margin-left: $app-bar-size;
+}
+
+@media screen and (max-width: 500px) {
+  .app {
+    height: calc(100vh - $app-bar-size);
+    margin-left: unset;
+    margin-bottom: $app-bar-size;
+  }
+}
