@@ -5,14 +5,12 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import AppBar from "./components/AppBar";
+import { AppBar } from "./components";
+import { Feed } from "./pages";
 import { DEFAULT_ROUTE, ROUTES } from "./router.model";
+import "./api";
 
 import "./App.scss";
-
-const Feed = () => {
-  return <div>Feed</div>;
-};
 
 const ImageDetails = () => {
   return <div>ImageDetails</div>;
