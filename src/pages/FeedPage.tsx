@@ -4,7 +4,7 @@ import { Feed } from "../components";
 
 const FeedPage = () => (
   <>
-    <Feed />;
+    <Feed />
     <Outlet />
   </>
 );

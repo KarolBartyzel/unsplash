@@ -1,4 +1,4 @@
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 25;
 
 type ImagesDto = {
   id: string;

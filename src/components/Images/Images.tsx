@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import { ImagesModel } from "../../api";
-import { ROUTES } from "../../router.model";
+import Image from "../Image";
 
 import "./Images.scss";
 
@@ -30,13 +29,7 @@ const Images = ({ images, onLoadMore }: Props) => {
   return (
     <div className="images" onScroll={handleScroll}>
       {images.map((image, index) => (
-        <Link
-          className="images__image"
-          key={index}
-          to={ROUTES.IMAGE.replace(":imageId", image.id)}
-        >
-          <img src={image.url} alt={image.description ?? "No title"} />
-        </Link>
+        <Image key={index} image={image} />
       ))}
     </div>
   );
