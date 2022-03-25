@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 
 import { getImages, ImagesModel, PAGE_SIZE } from "../../api";
 import { Images } from "../../components";
-import { ROUTES } from "../../router.model";
 
 const Feed = () => {
-  const [images, setImages] = useState<ImagesModel>([]);
+  const [images, setImages] = useState<ImagesModel[]>([]);
 
   const fetchImages = async (page: number) => {
     const newImages = await getImages(page);
@@ -25,7 +24,6 @@ const Feed = () => {
     <Images
       images={images}
       onLoadMore={() => fetchImages(images.length / PAGE_SIZE + 1)}
-      getRouterLink={(id) => ROUTES.FEED_IMAGE.replace(":imageId", id)}
     />
   );
 };

@@ -1,5 +1,12 @@
-import Feed from "../components/Feed";
+import { Outlet } from "react-router-dom";
 
-const FeedPage = () => <Feed />;
+import { Feed } from "../components";
+
+const FeedPage = () => (
+  <>
+    <Feed />;
+    <Outlet />
+  </>
+);
 
 export default FeedPage;

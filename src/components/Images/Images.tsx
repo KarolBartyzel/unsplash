@@ -1,22 +1,27 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { ImagesModel } from "../../api";
+import { ROUTES } from "../../router.model";
 
 import "./Images.scss";
 
 type Props = {
-  images: ImagesModel;
-  onLoadMore: () => Promise<boolean>;
-  getRouterLink: (id: string) => string;
+  images: ImagesModel[];
+  onLoadMore?: () => Promise<boolean>;
 };
 
-const Images = ({ images, onLoadMore, getRouterLink }: Props) => {
+const Images = ({ images, onLoadMore }: Props) => {
   const [shouldLoadMore, setShouldLoadMore] = useState(true);
 
   const handleScroll = async ({
     target: { scrollTop, scrollHeight, clientHeight },
   }: any) => {
-    if (shouldLoadMore && scrollTop + 2 * clientHeight > scrollHeight) {
+    if (
+      onLoadMore &&
+      shouldLoadMore &&
+      scrollTop + 2 * clientHeight > scrollHeight
+    ) {
       const hasMore = await onLoadMore();
       setShouldLoadMore(hasMore);
     }
@@ -28,7 +33,7 @@ const Images = ({ images, onLoadMore, getRouterLink }: Props) => {
         <Link
           className="images__image"
           key={index}
-          to={getRouterLink(image.id)}
+          to={ROUTES.IMAGE.replace(":imageId", image.id)}
         >
           <img src={image.url} alt={image.description ?? "No title"} />
         </Link>

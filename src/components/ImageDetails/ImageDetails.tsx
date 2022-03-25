@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -16,23 +17,30 @@ type Props = {
 const ImageDetails = ({ parentRoute }: Props) => {
   const { imageId } = useParams();
   const [image, setImage] = useState<ImageModel | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     getImage(imageId!).then((image) => setImage(image));
   }, [imageId]);
+
+  useEffect(() => {
+    if (image) {
+      setTimeout(() => setIsVisible(true), 0);
+    }
+  }, [image]);
 
   if (!image) {
     return null;
   }
 
   return (
-    <div className="image">
+    <div className={classNames("image", { "image--visible": isVisible })}>
       <div className="image__modal">
         <div className="image__photo">
           <img src={image.url} alt={image.description ?? "No title"} />
         </div>
         <div className="image__details">
-          <ImageDetailsControls parentRoute={parentRoute} />
+          <ImageDetailsControls parentRoute={parentRoute} image={image} />
           <ImageDetailsInfo image={image} />
           <ImageDetailsCamera>
             <ImageDetailsCamera.Item

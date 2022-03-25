@@ -1,26 +1,39 @@
+import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AppBar } from "./components";
-import { FeedImagePage, FeedPage } from "./pages";
+import { useLocalStorage } from "./hooks";
+import { getFavorites, init } from "./reducers/favoritesReducer";
+import { LS_KEY } from "./reducers/favoritesReducer.model";
+import { AppBar, ImageDetails } from "./components";
+import { FeedPage, FavoritesPage } from "./pages";
 import { DEFAULT_ROUTE, ROUTES } from "./router.model";
-import "./api";
+import { ImageModel } from "./api";
 
 import "./App.scss";
 
-const ImageDetails = () => {
-  return <div>ImageDetails</div>;
-};
-
-const Favorites = () => {
-  return <div>Favorites</div>;
-};
-
 const App = () => {
+  const [lsFavorites, setLsFavorites] = useLocalStorage<ImageModel[]>(
+    LS_KEY,
+    []
+  );
+  const dispatch = useDispatch();
+  const favorites = useSelector(getFavorites);
+
+  useEffect(() => {
+    dispatch(init(lsFavorites));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setLsFavorites(favorites);
+  }, [favorites, setLsFavorites]);
+
   return (
     <div className="app">
       <Router>
@@ -31,21 +44,19 @@ const App = () => {
             element={<Navigate replace to={DEFAULT_ROUTE} />}
           />
 
-          <Route path={ROUTES.FEED} element={<FeedPage />} />
+          <Route path={ROUTES.FEED} element={<FeedPage />}>
+            <Route
+              path={ROUTES.IMAGE}
+              element={<ImageDetails parentRoute={ROUTES.FEED} />}
+            />
+          </Route>
 
-          <Route path={ROUTES.FEED_IMAGE} element={<FeedImagePage />} />
-
-          <Route path={ROUTES.FAVORITES} element={<Favorites />} />
-
-          <Route
-            path={ROUTES.FAVORITES_IMAGE}
-            element={
-              <>
-                <Favorites />
-                <ImageDetails />
-              </>
-            }
-          />
+          <Route path={ROUTES.FAVORITES} element={<FavoritesPage />}>
+            <Route
+              path={ROUTES.IMAGE}
+              element={<ImageDetails parentRoute={ROUTES.FAVORITES} />}
+            />
+          </Route>
         </Routes>
       </Router>
     </div>

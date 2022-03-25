@@ -1,2 +1,2 @@
 export { default as FeedPage } from "./FeedPage";
-export { default as FeedImagePage } from "./FeedImagePage";
+export { default as FavoritesPage } from "./FavoritesPage";

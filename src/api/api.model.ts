@@ -5,14 +5,14 @@ type ImagesDto = {
   urls: {
     regular: string;
   };
-  description: string;
-}[];
+  description: string | null;
+};
 
 type ImagesModel = {
   id: string;
   url: string;
-  description: string;
-}[];
+  description: string | null;
+};
 
 type ImageDto = {
   id: string;
@@ -22,7 +22,7 @@ type ImageDto = {
       small: string;
     };
   };
-  description: string;
+  description: string | null;
   urls: {
     regular: string;
   };

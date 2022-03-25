@@ -19,7 +19,7 @@
 
 @media screen and (min-width: 1200px) {
   .images {
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(5, 20%);
     &__image {
       &:nth-child(n) {
         grid-row: unset;
@@ -39,7 +39,7 @@
 
 @media screen and (max-width: 1200px) {
   .images {
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 25%);
     &__image {
       &:nth-child(n) {
         grid-row: unset;
@@ -58,7 +58,7 @@
 
 @media screen and (max-width: 900px) {
   .images {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 33%);
     &__image {
       &:nth-child(n) {
         grid-row: unset;
@@ -76,7 +76,7 @@
 
 @media screen and (max-width: 600px) {
   .images {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 50%);
     &__image {
       &:nth-child(n) {
         grid-row: unset;
