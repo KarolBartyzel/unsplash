@@ -1,0 +1,48 @@
+@import "../../theme.scss";
+
+.image-details-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 12px 0;
+
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__author-icon {
+    border-radius: 50px;
+    margin-right: 8px;
+  }
+
+  &__author-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-lightgray-3;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .image-details-info {
+    &__title {
+      font-size: 18px;
+    }
+
+    &__author-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    &__author-name {
+      font-size: 12px;
+    }
+  }
+}

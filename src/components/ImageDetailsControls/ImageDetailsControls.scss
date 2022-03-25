@@ -1,0 +1,58 @@
+@import "../../theme.scss";
+
+.image-details-controls {
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  button {
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    color: $color-white;
+  }
+
+  &__like {
+    background-color: $color-darkgray-4;
+    border-radius: 10px;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+      fill: $color-darkgray-4;
+    }
+
+    &--checked {
+      & > svg {
+        fill: $color-blue;
+      }
+
+      background-color: $color-blue;
+    }
+  }
+
+  &__close {
+    padding: 8px;
+    border-radius: 10px;
+    background-color: $color-darkgray-4;
+
+    & > svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .image-details-controls {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: calc(100% - 24px);
+  }
+}

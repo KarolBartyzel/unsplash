@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ImageModel } from "../../api";
+import { ImagesModel } from "../../api";
 
 import "./Images.scss";
 
 type Props = {
-  images: ImageModel[];
+  images: ImagesModel;
   onLoadMore: () => Promise<boolean>;
   getRouterLink: (id: string) => string;
 };
@@ -23,10 +23,10 @@ const Images = ({ images, onLoadMore, getRouterLink }: Props) => {
   };
 
   return (
-    <div className="photos" onScroll={handleScroll}>
+    <div className="images" onScroll={handleScroll}>
       {images.map((image, index) => (
         <Link
-          className="photos__photo"
+          className="images__image"
           key={index}
           to={getRouterLink(image.id)}
         >

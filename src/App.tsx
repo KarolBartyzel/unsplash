@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import { AppBar } from "./components";
-import { Feed } from "./pages";
+import { FeedImagePage, FeedPage } from "./pages";
 import { DEFAULT_ROUTE, ROUTES } from "./router.model";
 import "./api";
 
@@ -31,17 +31,9 @@ const App = () => {
             element={<Navigate replace to={DEFAULT_ROUTE} />}
           />
 
-          <Route path={ROUTES.FEED} element={<Feed />} />
+          <Route path={ROUTES.FEED} element={<FeedPage />} />
 
-          <Route
-            path={ROUTES.FEED_IMAGE}
-            element={
-              <>
-                <Feed />
-                <ImageDetails />
-              </>
-            }
-          />
+          <Route path={ROUTES.FEED_IMAGE} element={<FeedImagePage />} />
 
           <Route path={ROUTES.FAVORITES} element={<Favorites />} />
 

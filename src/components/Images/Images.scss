@@ -1,10 +1,10 @@
-.photos {
+.images {
   padding: 2.5vw;
   display: grid;
   overflow: auto;
   max-height: calc(100% - 5vw);
 
-  &__photo {
+  &__image {
     cursor: pointer;
     margin: 12px;
 
@@ -18,9 +18,9 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .photos {
+  .images {
     grid-template-columns: repeat(5, auto);
-    &__photo {
+    &__image {
       &:nth-child(n) {
         grid-row: unset;
         height: 10vw;
@@ -38,9 +38,9 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .photos {
+  .images {
     grid-template-columns: repeat(4, auto);
-    &__photo {
+    &__image {
       &:nth-child(n) {
         grid-row: unset;
         height: 12vw;
@@ -57,9 +57,9 @@
 }
 
 @media screen and (max-width: 900px) {
-  .photos {
+  .images {
     grid-template-columns: repeat(3, auto);
-    &__photo {
+    &__image {
       &:nth-child(n) {
         grid-row: unset;
         height: 15vw;
@@ -75,9 +75,9 @@
 }
 
 @media screen and (max-width: 600px) {
-  .photos {
+  .images {
     grid-template-columns: repeat(2, auto);
-    &__photo {
+    &__image {
       &:nth-child(n) {
         grid-row: unset;
         height: 20vw;

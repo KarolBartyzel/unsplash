@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { getImages, ImageModel, PAGE_SIZE } from "../../api";
+import { getImages, ImagesModel, PAGE_SIZE } from "../../api";
 import { Images } from "../../components";
 import { ROUTES } from "../../router.model";
 
 const Feed = () => {
-  const [images, setImages] = useState<ImageModel[]>([]);
+  const [images, setImages] = useState<ImagesModel>([]);
 
   const fetchImages = async (page: number) => {
     const newImages = await getImages(page);

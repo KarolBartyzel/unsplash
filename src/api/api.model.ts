@@ -1,4 +1,18 @@
-const PAGE_SIZE = 100;
+const PAGE_SIZE = 20;
+
+type ImagesDto = {
+  id: string;
+  urls: {
+    regular: string;
+  };
+  description: string;
+}[];
+
+type ImagesModel = {
+  id: string;
+  url: string;
+  description: string;
+}[];
 
 type ImageDto = {
   id: string;
@@ -12,6 +26,14 @@ type ImageDto = {
   urls: {
     regular: string;
   };
+  exif: {
+    make: string | null;
+    model: string | null;
+    focal_length: string | null;
+    aperture: string | null;
+    iso: string | null;
+    exposure_time: string | null;
+  };
 };
 
 type ImageModel = {
@@ -22,7 +44,15 @@ type ImageModel = {
   };
   description: string | null;
   url: string;
+  camera: {
+    make: string | null;
+    model: string | null;
+    focalLength: number | null;
+    aperture: number | null;
+    shutterSpeed: number | null;
+    iso: number | null;
+  };
 };
 
-export type { ImageDto, ImageModel };
+export type { ImagesDto, ImagesModel, ImageDto, ImageModel };
 export { PAGE_SIZE };
